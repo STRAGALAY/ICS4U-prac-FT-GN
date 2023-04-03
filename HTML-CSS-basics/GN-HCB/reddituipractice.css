@@ -1,0 +1,53 @@
+* {
+box-sizing: border-box;
+}
+
+html {
+    background-color: lightgray;
+}
+
+.ghgh {
+display: flex;
+margin-left: 0px;
+background-color: white;
+}
+
+.r1 {
+font-size: 30px;
+margin: 0px;
+
+}
+
+.r2 {
+display: flex;
+margin-left: 80px;
+margin-top: 0px;
+}
+
+#search {
+margin-left: 50px;
+width: 30%;
+}
+
+.i {
+width: 120px;
+height: 120px;
+background-color: blueviolet;
+border: 3px solid black;
+margin: 50px;
+
+}
+
+.cont {
+display: flex;
+justify-content: space-around;
+background-color: blue;
+
+}
+
+.qwqw {
+
+margin-left: 10vw;
+margin-right: 10vw; 
+
+}
