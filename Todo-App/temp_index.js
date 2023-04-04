@@ -6,31 +6,31 @@ const filterOption = document.querySelector(".filter-todo");
 
 //Event Listeners
 todoButton.addEventListener("click", addTodo);
-todoList.addEventListener("click", deleteTodo);
+todoList.addEventListener("click", onTodoClick);
 filterOption.addEventListener("click", filterTodo);
 
 //Functions
-function addTodo(e) {
-  e.preventDefault();
+function addTodo(event) {
+  event.preventDefault();
 
-  //Create todo div
+  // //Create todo div
   const todoDiv = document.createElement("div");
   todoDiv.classList.add("todo");
 
-  //Create list
   const newTodo = document.createElement("li");
   newTodo.innerText = todoInput.value;
   newTodo.classList.add("todo-item");
   todoDiv.appendChild(newTodo);
+  saveLocalTodos(todoInput.value);
   todoInput.value = "";
 
-  //Create Completed Button
+  // Create Completed Button
   const completedButton = document.createElement("button");
   completedButton.innerText = "Complete";
   completedButton.classList.add("complete-btn");
   todoDiv.appendChild(completedButton);
 
-  //Create trash button
+  // Create trash button
   const trashButton = document.createElement("button");
   trashButton.innerText = "Delete";
   trashButton.classList.add("trash-btn");
@@ -40,26 +40,24 @@ function addTodo(e) {
   todoList.appendChild(todoDiv);
 }
 
-function deleteTodo(e) {
+function onTodoClick(e) {
   const item = e.target;
+  const todo = item.parentElement;
 
   if (item.classList[0] === "trash-btn") {
-    const todo = item.parentElement;
-    todo.classList.add("fall");
-    removeLocalTodos(todo);
-    todo.addEventListener("transitionend", (e) => {
-      todo.remove();
-    });
+    // removeLocalTodos(todo);
+    todo.remove();
   }
+
   if (item.classList[0] === "complete-btn") {
-    const todo = item.parentElement;
     todo.classList.toggle("completed");
-    console.log(todo);
+    todo.classList.toggle("not-comp");
   }
 }
 
 function filterTodo(e) {
   const todos = todoList.childNodes;
+  console.log("clicked", e.target.value);
 
   todos.forEach(function (todo) {
     switch (e.target.value) {
@@ -87,6 +85,7 @@ function filterTodo(e) {
  *
  */
 
+console.log(localStorage.getItem("asdasdasdasd"));
 function saveLocalTodos(todo) {
   let todos;
 
