@@ -3,6 +3,7 @@ const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
 const filterOption = document.querySelector(".filter-todo");
+getTodos()
 
 //Event Listeners
 todoButton.addEventListener("click", addTodo);
@@ -12,6 +13,10 @@ filterOption.addEventListener("click", filterTodo);
 //Functions
 function addTodo(event) {
   event.preventDefault();
+  if (todoInput.value.trim() === "") {
+    todoInput.value = ''
+    return;
+  }
 
   // //Create todo div
   const todoDiv = document.createElement("div");
@@ -47,6 +52,7 @@ function onTodoClick(e) {
   if (item.classList[0] === "trash-btn") {
     // removeLocalTodos(todo);
     todo.remove();
+    removeLocalTodos(todo)
   }
 
   if (item.classList[0] === "complete-btn") {
@@ -85,7 +91,7 @@ function filterTodo(e) {
  *
  */
 
-console.log(localStorage.getItem("asdasdasdasd"));
+// console.log(localStorage.getItem("todos"));
 function saveLocalTodos(todo) {
   let todos;
 
